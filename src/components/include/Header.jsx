@@ -8,7 +8,7 @@ import '@fontsource/inter';
 import { useSelector } from 'react-redux';
 
 const navigation = [
-  { name: 'Home', href: '#home' },
+  { name: 'Home', href: '#hero' },
   { name: 'About', href: '#about' },
   { name: 'Shop', href: '#shop' },
 ];

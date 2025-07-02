@@ -8,7 +8,7 @@ export default function HeroSection() {
 
     
     return (
-        <section className="relative min-h-max flex items-center bg-gradient-to-br green-50 via-emerald-50 to-earth-50 pt-16">
+        <section id="hero" className="relative min-h-max flex items-center bg-gradient-to-br green-50 via-emerald-50 to-earth-50 pt-16">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between w-full px-6 py-12">
                 {/* Left Content */}
                 <div className="flex-1 max-w-xl">
