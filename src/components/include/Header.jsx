@@ -5,6 +5,7 @@ import { BiSearchAlt2, BiUser } from 'react-icons/bi';
 import { FiShoppingCart, FiMenu, FiX } from 'react-icons/fi';
 import '@fontsource/poppins/700.css';
 import '@fontsource/inter';
+import { useSelector } from 'react-redux';
 
 const navigation = [
   { name: 'Home', href: '#home' },
@@ -15,10 +16,11 @@ const navigation = [
 export default function Header() {
   // Mock active link and cart count
   const [active, setActive] = useState('Home');
-  const [cartCount] = useState(2);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const { count } = useSelector(state => state.addcart);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +33,7 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
 
   return (
     <header
@@ -65,9 +68,9 @@ export default function Header() {
               aria-label="Cart"
             >
               <FiShoppingCart className="h-5 w-5" />
-              {cartCount > 0 && (
+              {count > 0 && (
                 <span className="absolute -top-2 -right-2 bg-[#E4903E] text-white h-5 w-5 flex items-center justify-center rounded-full text-xs font-bold">
-                  {cartCount}
+                  {count}
                 </span>
               )}
             </button>

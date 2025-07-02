@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Badge from "./badge";
 import Image from "next/image";
 import { FiShoppingCart } from "react-icons/fi";
 import Button from "./Button";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, decreamentQty, increamentQty } from "@/redux/slice/addCartSlice";
+import { BiMinus, BiPlus } from "react-icons/bi";
 
 export default function ProductCard({
+    id,
     image,
     title,
     description,
@@ -13,7 +17,27 @@ export default function ProductCard({
     oldPrice,
     rating,
     onBuy,
+    qty
 }) {
+    const dispatch = useDispatch();
+    const { cart } = useSelector(state => state.addcart);
+    const [existItem, setExistITem] = useState({});
+
+    useEffect(() => {
+        const item = cart.find(item => item.id === id);
+        setExistITem(item);
+    },[cart, id])
+
+    const handleIncreament = (item) => {
+        console.log(item.id)
+        dispatch(increamentQty(item.id))
+    }
+
+    const handleDecreament = (item) => {
+        dispatch(decreamentQty(item.id));
+    }
+
+
     return (
         <div className="bg-white rounded-2xl p-6 flex flex-col relative transition hover:shadow-lg min-w-[320px] w-full mx-auto">
             {/* Rating Badge */}
@@ -48,9 +72,26 @@ export default function ProductCard({
             </div>
             {/* Actions */}
             <div className="flex items-center gap-3 mt-auto">
-                <button className="bg-gray-100 rounded-full p-3 hover:bg-green-100 transition">
-                    <FiShoppingCart className="text-green-700 text-xl" />
-                </button>
+                {
+                    existItem && existItem.qty > 0 ? 
+                    <>
+                        <button onClick={() => handleDecreament({id, qty})} className="bg-gray-100 rounded-full p-3 hover:bg-green-100 transition cursor-pointer">
+                            <BiMinus className="text-green-700 text-xl" />
+                        </button>
+                        <button className="bg-gray-100 flex items-center justify-center w-[44px] h-[44px] rounded-full p-3 hover:bg-green-100 transition cursor-pointer">
+                            <span className="text-green-700 text-xl" >{existItem.qty }</span>
+                        </button>
+                        <button onClick={() => handleIncreament({id, qty})} className="bg-gray-100 rounded-full p-3 hover:bg-green-100 transition cursor-pointer">
+                            <BiPlus className="text-green-700 text-xl" />
+                        </button>
+                    </>
+                     : 
+                    <>
+                        <button onClick={() => dispatch(addToCart({ id, image, title, description, price, oldPrice, rating, qty }))} className="bg-gray-100 rounded-full p-3 hover:bg-green-100 transition cursor-pointer">
+                            <FiShoppingCart className="text-green-700 text-xl" />
+                        </button>
+                    </>
+                }
                 <Button variant="fill" className="flex-1 py-3" onClick={onBuy}>
                     Buy Now
                 </Button>

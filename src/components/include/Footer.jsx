@@ -2,18 +2,17 @@
 import React from 'react';
 import { FiFacebook, FiInstagram, FiTwitter } from 'react-icons/fi';
 import { BiLogoWhatsapp } from 'react-icons/bi';
-import Button from '../ui/Button';
 
 
 export const Footer = () => {
     const footerLinks = {
         company: [
         { name: 'About Us', href: '#about' },
-        { name: 'Our Story', href: '#about' },
-        { name: 'Press', href: '#' },
+        { name: 'Products', href: '#shop' },
+        { name: 'Testimonials', href: '#testimonial' },
         ],
         support: [
-        { name: 'Contact Us', href: '#' },
+        // { name: 'Contact Us', href: '#' },
         { name: 'Shipping Info', href: '#' },
         { name: 'Returns', href: '#' },
         ],
@@ -75,8 +74,6 @@ export const Footer = () => {
                     ))}
                     </ul>
                 </div>
-
-                
 
                 <div>
                     <h4 className="font-semibold text-white mb-4">Support</h4>

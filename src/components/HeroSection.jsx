@@ -2,10 +2,13 @@ import React from "react";
 import Button from "@/components/ui/Button";
 import { FiCheckCircle, FiHeart, FiBox } from "react-icons/fi";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
+
+    
     return (
-        <section className="relative min-h-screen flex items-center bg-gradient-to-br from-nature-50 via-emerald-50 to-earth-50 pt-16">
+        <section className="relative min-h-max flex items-center bg-gradient-to-br green-50 via-emerald-50 to-earth-50 pt-16">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between w-full px-6 py-12">
                 {/* Left Content */}
                 <div className="flex-1 max-w-xl">
@@ -38,8 +41,9 @@ export default function HeroSection() {
                 </div>
                 {/* Buttons */}
                 <div className="flex gap-4">
-                    <Button variant="fill">Shop Now</Button>
-                    <Button variant="outline">Learn More</Button>
+                    <Link href="#shop"><Button variant="fill">Shop Now</Button></Link>
+                    <Link href="#about"><Button variant="outline">Learn More</Button></Link>
+                    
                 </div>
                 </div>
                 {/* Right Image */}
@@ -47,12 +51,12 @@ export default function HeroSection() {
                 <div className="relative w-full flex items-center justify-center">
                     {/* Protein Image (large, centered) */}
                     <Image
-                    src="/assets/image/h-product.png"
-                    alt="Protein"
-                    width={520}
-                    height={560}
-                    className="w-[420px] h-[460px] object-contain"
-                    style={{ zIndex: 2 }}
+                        src="/assets/image/h-product.png"
+                        alt="Protein"
+                        width={520}
+                        height={560}
+                        className="w-[420px] h-[460px] object-contain"
+                        style={{ zIndex: 2 }}
                     />
                 </div>
                 </div>

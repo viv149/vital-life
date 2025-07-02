@@ -9,7 +9,7 @@ export default function Testimonial({
   rating = 5,
 }) {
   return (
-    <div className="bg-[#EAFBE5] rounded-xl p-6 shadow-sm flex flex-col gap-4 max-w-xl mx-auto">
+    <div className="bg-[#EAFBE5] rounded-xl p-6 hover:shadow-sm transition-all flex flex-col gap-4 max-w-xl mx-auto">
       {/* Stars */}
       <div className="flex gap-1 mb-2">
         {[...Array(5)].map((_, i) => (
