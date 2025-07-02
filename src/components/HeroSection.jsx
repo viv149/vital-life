@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button";
 import { FiCheckCircle, FiHeart, FiBox } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
+import { BiLeaf } from "react-icons/bi";
 
 export default function HeroSection() {
 
@@ -31,7 +32,7 @@ export default function HeroSection() {
                     Lab Tested
                     </div>
                     <div className="flex items-center gap-2 text-gray-700 text-base">
-                    <FiHeart className="text-green-600" />
+                    <BiLeaf className="text-green-600" />
                     100% Natural
                     </div>
                     <div className="flex items-center gap-2 text-gray-700 text-base">
